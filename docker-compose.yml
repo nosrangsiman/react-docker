@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+  React_1:
+    image: react-cicd
+    container_name: React_1
+    restart: always
+    links: 
+      - nginx
+  NodeJS_1:
+    image: nodejs-cicd
+    container_name: NodeJS_1
+    restart: always
+    links:
+      - nginx
