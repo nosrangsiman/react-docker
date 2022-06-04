@@ -39,8 +39,6 @@ jobs:
       - name: front-end
         run: |
           cd react-fe
-          npm install -g serve
-          serve -s build
           sudo docker build . -t react-cicd
           cd ..
           sudo docker compose up -d
