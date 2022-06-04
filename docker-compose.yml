@@ -1,4 +1,6 @@
 version: '3.9'
+ืnetworks:
+  - react_network
 services:
   nginx:
     image: nginx:alpine
@@ -8,15 +10,17 @@ services:
       - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - react_network
   React_1:
     image: react-cicd
     container_name: React_1
     restart: always
-    links: 
-      - nginx
+    networks:
+      - react_network
   NodeJS_1:
     image: nodejs-cicd
     container_name: NodeJS_1
     restart: always
-    links:
-      - nginx
+    networks:
+      - react_network
