@@ -5,7 +5,6 @@ ENV PATH /app/node_modules/.bin:$PATH
 RUN npm i
 RUN npm install -g npm@8.12.0
 RUN npm run build
-RUN npm install -g serve
 RUN serve -s build
 CMD ["npm","start"]
 EXPOSE 3000
