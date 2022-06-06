@@ -1,7 +1,6 @@
 version: '3.9'
 networks:
-  frontend:
-  backend:
+  nginx_network:
 services:
   nginx:
     image: nginx:alpine
@@ -12,19 +11,18 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
     networks:
-      - frontend
+      - nginx_network
   React_1:
     build: ./react-fe
     image: react-cicd
     container_name: React_1
     restart: always
     networks:
-      - frontend
-      - backend
+      - nginx_network
   NodeJS_1:
     build: .
     image: nodejs-cicd
     container_name: NodeJS_1
     restart: always
     networks:
-      - backend
+      - nginx_network
