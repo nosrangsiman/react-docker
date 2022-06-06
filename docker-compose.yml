@@ -14,9 +14,13 @@ services:
     image: react-cicd
     container_name: React_1
     restart: always
+    links:
+      - nginx
 
   NodeJS_1:
     build: .
     image: nodejs-cicd
     container_name: NodeJS_1
     restart: always
+    links:
+      - nginx
