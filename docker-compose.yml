@@ -1,6 +1,4 @@
 version: '3.9'
-networks:
-  nginx_network:
 services:
   nginx:
     image: nginx:alpine
@@ -10,19 +8,15 @@ services:
       - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-    networks:
-      - nginx_network
+
   React_1:
     build: ./react-fe
     image: react-cicd
     container_name: React_1
     restart: always
-    networks:
-      - nginx_network
+
   NodeJS_1:
     build: .
     image: nodejs-cicd
     container_name: NodeJS_1
     restart: always
-    networks:
-      - nginx_network
